@@ -1,0 +1,1 @@
+../bundle/smyck-theme/smyck.vim
