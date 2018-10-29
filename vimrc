@@ -1,11 +1,18 @@
 source ~/.vim/plug.vim
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep --smart-case'
+endif
 "defaults write NSGlobalDomain KeyRepeat -int 1
 "defaults write NSGlobalDomain InitialKeyRepeat -int 10
-
-let theme = 'dracula'
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+let theme = 'gruvbox'
 
 if theme == 'dracula'
   color dracula
+elseif theme == 'deus'
+  colors deus
 elseif theme == 'onedark'
   colorscheme onedark
 elseif theme == 'smyck'
@@ -83,6 +90,20 @@ au FocusLost * :wa
 let g:airline_section_y = []
 
 " pluginconfig
+"===========================================
+" Grepper
+"===========================================
+let g:grepper               = {}
+let g:grepper.tools         = ['git', 'ag', 'rg']
+let g:grepper.jump          = 1
+let g:grepper.next_tool     = '<leader>g'
+let g:grepper.open      = 1
+nmap gu viw<plug>(GrepperOperator)
+nnoremap <leader>g :Grepper -tool git<cr>
+nnoremap <leader>G :Grepper -tool ag<cr>
+
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
 " ==========================================
 " easymotion
 " ==========================================
@@ -283,3 +304,4 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
+let NERDTreeShowHidden=1

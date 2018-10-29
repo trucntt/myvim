@@ -1,5 +1,5 @@
 call plug#begin('~/.vim/plugged')
-
+Plug 'ajmwagar/vim-deus'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
@@ -32,6 +32,8 @@ Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'yssl/QFEnter'
 Plug 'easymotion/vim-easymotion'
+Plug 'phongnh/vim-rubocop'
+Plug 'mhinz/vim-grepper'
 
 " themes
 Plug 'dracula/vim'
